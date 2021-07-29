@@ -64,7 +64,7 @@ public class BloodBathManager {
 
     public void setLines(List<String> lines) {
         hologram.clearLines();
-        lines.forEach(line -> hologram.appendTextLine(line));
+        lines.forEach(line -> hologram.appendTextLine(Utils.color(line)));
     }
 
     public void start() {
