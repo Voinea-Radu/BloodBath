@@ -1,9 +1,6 @@
 package dev.lightdream.bloodbath;
 
-import dev.lightdream.bloodbath.commands.Command;
-import dev.lightdream.bloodbath.commands.ReloadCommand;
-import dev.lightdream.bloodbath.commands.SetLootCommand;
-import dev.lightdream.bloodbath.commands.StartCommand;
+import dev.lightdream.bloodbath.commands.*;
 import dev.lightdream.bloodbath.dto.Config;
 import dev.lightdream.bloodbath.dto.Loot;
 import dev.lightdream.bloodbath.dto.Messages;
@@ -39,7 +36,6 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-
         //Utils
         fileManager = new FileManager(this, FileManager.PersistType.YAML);
 
@@ -49,7 +45,9 @@ public final class Main extends JavaPlugin {
         //Commands
         commands.add(new ReloadCommand(this));
         commands.add(new SetLootCommand(this));
+        commands.add(new SetKillLootCommand(this));
         commands.add(new StartCommand(this));
+        commands.add(new GiveFlareCommand(this));
 
         //Managers
         commandManager = new CommandManager(this, PROJECT_ID.toLowerCase());
@@ -71,6 +69,7 @@ public final class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         //Save files
+        fileManager.save(loot);
 
         //Save to db
     }

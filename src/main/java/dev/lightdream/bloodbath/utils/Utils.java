@@ -173,4 +173,22 @@ public class Utils {
         return new Location(Bukkit.getWorld(location.world), location.x, location.y, location.z);
     }
 
+    public static boolean compareItemStacksNoNBT(ItemStack i1, ItemStack i2){
+        if(i1.hasItemMeta()!= i2.hasItemMeta()){
+            return false;
+        }
+        if(i1.getType()!=i2.getType()){
+            return false;
+        }
+        if(i1.hasItemMeta()){
+            if(!i1.getItemMeta().getDisplayName().equals(i2.getItemMeta().getDisplayName())){
+                return false;
+            }
+            if(!i1.getItemMeta().getLore().equals(i2.getItemMeta().getLore())){
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

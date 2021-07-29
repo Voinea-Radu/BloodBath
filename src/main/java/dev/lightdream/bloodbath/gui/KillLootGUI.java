@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
-public class BloodBathLootGUI implements GUI {
+public class KillLootGUI implements GUI {
 
     private final Main plugin;
 
@@ -25,7 +25,6 @@ public class BloodBathLootGUI implements GUI {
 
     @Override
     public void onInventoryClose(InventoryCloseEvent event) {
-        System.out.println("Event triggered");
         List<ItemStack> loot = new ArrayList<>();
 
         for (ItemStack item : event.getInventory().getContents()) {
@@ -33,15 +32,15 @@ public class BloodBathLootGUI implements GUI {
                 loot.add(item);
             }
         }
-        plugin.getLoot().loot = Utils.itemStackArrayToBase64(loot);
+        plugin.getLoot().killLoot = Utils.itemStackArrayToBase64(loot);
     }
 
     @Override
     public Inventory getInventory() {
-        Inventory inventory = Bukkit.createInventory(this, 54, Utils.color(plugin.getMessages().bloodBathLootGUI));
+        Inventory inventory = Bukkit.createInventory(this, 54, Utils.color(plugin.getMessages().lootGUI));
 
         try {
-            List<ItemStack> loot = Utils.itemStackArrayFromBase64(plugin.getLoot().loot);
+            List<ItemStack> loot = Utils.itemStackArrayFromBase64(plugin.getLoot().killLoot);
             loot.forEach(inventory::addItem);
         } catch (IOException e) {
             e.printStackTrace();
