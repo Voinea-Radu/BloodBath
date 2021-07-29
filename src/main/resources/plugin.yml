@@ -1,0 +1,9 @@
+name: BloodBath
+version: ${project.version}
+main: dev.lightdream.bloodbath.Main
+authors: [ L1ghtDream ]
+website: https://lightdream.tk
+depend: [HolographicDisplays]
+commands:
+  bb:
+    description: NA
