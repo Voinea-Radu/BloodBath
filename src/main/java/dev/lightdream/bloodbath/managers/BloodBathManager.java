@@ -4,6 +4,7 @@ import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
 import dev.lightdream.bloodbath.Main;
 import dev.lightdream.bloodbath.utils.Utils;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -19,6 +20,7 @@ public class BloodBathManager {
     private final Main plugin;
     private Hologram hologram;
 
+    @Getter
     private State state = State.STOPPED;
 
     private BukkitTask task;

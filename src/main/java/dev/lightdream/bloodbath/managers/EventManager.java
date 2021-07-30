@@ -51,6 +51,10 @@ public class EventManager implements Listener {
 
     @EventHandler
     public void onPlayerKill(PlayerDeathEvent event) {
+        if(plugin.getBloodBathManager().getState() != BloodBathManager.State.RUNNING){
+            return;
+        }
+
         Player player = event.getEntity();
         if (player == null) {
             return;
@@ -66,8 +70,6 @@ public class EventManager implements Listener {
                 return;
             }
             int item = Utils.generateRandom(0, items.size() - 1);
-            System.out.println("item " + item);
-            System.out.println(items.get(item));
             killer.getInventory().addItem(items.get(item));
         } catch (IOException e) {
             e.printStackTrace();
